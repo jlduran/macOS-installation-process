@@ -30,6 +30,14 @@ $ echo 'export PATH="$GEM_PATH:/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
 $ gem install rouge
 ....
 +
+. Create links to /usr/local/bin.
++
+[source,shell]
+....
+$ ln -s /usr/local/opt/ruby/bin/ruby /usr/local/bin/ruby
+$ ln -s /usr/local/lib/ruby/gems/3.1.0/bin/rougify /usr/local/bin/rougify
+....
++
 . Install a local working copy of the documentation from the FreeBSD repository in [.filename]#~/doc# (see crossref:working-copy[working-copy,The Working Copy]).
 +
 [source,shell]
@@ -41,13 +49,6 @@ $ git clone https://git.FreeBSD.org/doc.git ~/doc
 +
 Review the output and edit the files to fix any problems shown, then rerun the command to find any remaining problems.
 Repeat until all of the errors are resolved.
-+
-. XXX Patch Makefile. XXX
-+
-[source,shell]
-....
-$ sed -i "" -e "s|\${LOCALBASE}/bin/rougify|\${GEM_PATH}/rougify|" ~/doc/documentation/Makefile
-....
 +
 . Always build and test the changes before submitting them. Running `bmake` in the top-level directory of the documentation will generate that documentation in HTML format.
 +
